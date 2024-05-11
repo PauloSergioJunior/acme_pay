@@ -1,0 +1,6 @@
+br/com/acmePay/application/domain/enums/CustomerBalanceStatus.class
+br/com/acmePay/application/domain/exception/CustomerDeleteException.class
+br/com/acmePay/Main.class
+br/com/acmePay/application/domain/CustomerDomain$CustomerDomainBuilder.class
+br/com/acmePay/application/domain/CustomerDomain.class
+br/com/acmePay/application/domain/enums/CustomerCreationStatus.class

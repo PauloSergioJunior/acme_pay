@@ -1,0 +1,5 @@
+/home/paulosergio/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/application/domain/enums/CustomerCreationStatus.java
+/home/paulosergio/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/application/domain/enums/CustomerBalanceStatus.java
+/home/paulosergio/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/application/domain/CustomerDomain.java
+/home/paulosergio/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/application/domain/exception/CustomerDeleteException.java
+/home/paulosergio/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/Main.java
