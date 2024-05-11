@@ -9,47 +9,31 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class AccountDomain {
 
     private Long id;
-    private Integer accountNumber;
-    private Integer agencyNumber;
+    private Integer number;
+    private Integer agency;
     private BigDecimal balance;
     private Boolean close;
     private String customer;
     private LocalDateTime created_at;
     private LocalDateTime updated_at;
 
-
-
-    public void create(AccountDomain account) {
-
+    public void create() {
     }
 
     public void deposit(BigDecimal amount){
-        this.balance = this.balance.add(amount);
-
+        this.balance.add(amount);
     }
 
-    public void withdraw(BigDecimal amount) throws BalanceToWithdrawException{
-
-        checkBalance(amount);
-        this.balance = this.balance.subtract(amount);
-
-    }
-
-    public void transfer(AccountDomain targetAccount, BigDecimal valueTranfer) throws BalanceToWithdrawException {
-        this.withdraw(valueTranfer);
-        targetAccount.deposit(valueTranfer);
-    }
-
-    private void checkBalance(BigDecimal amount) throws BalanceToWithdrawException {
-        if (this.balance.compareTo(amount) < 0){
+    public void withdraw(BigDecimal amount) throws BalanceToWithdrawException {
+        if (this.balance.compareTo(amount) >= 0){
+            this.balance.subtract(amount);
+        }else {
             throw new BalanceToWithdrawException("error withdraw");
         }
-
     }
-
 }
