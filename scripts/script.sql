@@ -1,10 +1,12 @@
 
-create table  if not exists customers(
+create table  if not exists customer(
 	id serial PRIMARY KEY,
-	name VARCHAR (50) not null,
-	email VARCHAR(100) not null,
-	phone VARCHAR(20) not null,
-	document VARCHAR(20) not null
+	name VARCHAR not null,
+	email VARCHAR not null,
+	phone VARCHAR not null,
+	document VARCHAR not null UNIQUE,
+	created_at TIMESTAMP not null,
+	updated_at TIMESTAMP
 );
 
 create table  if not exists accounts(
