@@ -1,17 +1,19 @@
 package br.com.acmePay.application.domain;
 
+import br.com.acmePay.application.ports.out.IListCustomer;
 import br.com.acmePay.application.ports.out.ICreateCustomer;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
+@Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class CustomerDomain {
     private Long id;
     private String name;
@@ -25,4 +27,9 @@ public class CustomerDomain {
     public void create(ICreateCustomer createCustomer){
         createCustomer.execute(this);
     }
+
+    public List<CustomerDomain> listCustomer(IListCustomer listCustomer){
+        return listCustomer.execute();
+    }
+
 }

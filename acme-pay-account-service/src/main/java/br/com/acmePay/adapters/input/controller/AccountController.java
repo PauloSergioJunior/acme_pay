@@ -9,6 +9,7 @@ import br.com.acmePay.application.ports.in.ICreateAccountUseCase;
 import br.com.acmePay.application.ports.in.IDeleteAccountUseCase;
 import br.com.acmePay.application.ports.in.IListAccountUseCase;
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;

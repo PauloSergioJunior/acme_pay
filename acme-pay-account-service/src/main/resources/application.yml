@@ -2,6 +2,8 @@ server:
   port: 8081
 
 spring:
+  application:
+    name: account-service
   datasource:
     driver-class-name: org.postgresql.Driver
     password: postgres
@@ -15,3 +17,17 @@ spring:
   flyway:
     baseline-on-migrate: true
     enabled: true
+
+# swagger-ui
+springdoc:
+  default-produces-media-type: application/json
+  default-consumes-media-type: application/json
+  api-docs:
+    enabled: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+    instance:
+      preferIpAddress: true

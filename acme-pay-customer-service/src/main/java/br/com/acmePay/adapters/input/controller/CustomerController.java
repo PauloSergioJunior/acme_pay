@@ -5,14 +5,18 @@ import br.com.acmePay.adapters.input.api.request.CustomerRequest;
 import br.com.acmePay.adapters.input.api.response.CustomerResponse;
 import br.com.acmePay.application.domain.CustomerDomain;
 import br.com.acmePay.application.ports.in.ICreateCustomerUseCase;
+import br.com.acmePay.application.ports.in.IListCustomerUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
 public class CustomerController implements ICustomerResourceAPI {
 
     private final ICreateCustomerUseCase customerUseCase;
+    private final IListCustomerUseCase listCustomerUseCase;
 
     @Override
     public CustomerResponse create(CustomerRequest request) {
@@ -29,6 +33,16 @@ public class CustomerController implements ICustomerResourceAPI {
         return CustomerResponse.builder()
                 .message("Customer created")
                 .build();
+    }
+
+    @Override
+    public List<CustomerResponse> list() {
+        return listCustomerUseCase.execute()
+                .stream()
+                .map(g -> CustomerResponse.builder()
+                        .message(g.toString())
+                        .build())
+                .toList();
     }
 
 }

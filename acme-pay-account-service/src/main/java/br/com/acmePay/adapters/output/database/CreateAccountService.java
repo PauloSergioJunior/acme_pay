@@ -1,7 +1,7 @@
-package br.com.acmePay.adapters.output;
+package br.com.acmePay.adapters.output.database;
 
-import br.com.acmePay.adapters.output.entity.AccountEntity;
-import br.com.acmePay.adapters.output.repository.IAccountRepository;
+import br.com.acmePay.adapters.output.database.entity.AccountEntity;
+import br.com.acmePay.adapters.output.database.repository.IAccountRepository;
 import br.com.acmePay.application.domain.AccountDomain;
 import br.com.acmePay.application.ports.out.ICreateAccount;
 import lombok.AllArgsConstructor;
@@ -24,6 +24,7 @@ public class CreateAccountService implements ICreateAccount {
                 .updated_at(accountDomain.getUpdated_at())
                 .close(accountDomain.getClose())
                 .build();
+
         repository.save(entity);
     }
 }

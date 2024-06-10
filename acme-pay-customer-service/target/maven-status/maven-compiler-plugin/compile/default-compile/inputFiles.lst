@@ -1,10 +1,11 @@
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/application/usecase/CreateCustomerUseCase.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/adapters/input/api/ICustomerResourceAPI.java
+/home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/application/ports/in/IListCustomerUseCase.java
+/home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/application/usecase/ListCustomerUseCase.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/application/utils/UseCase.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/adapters/input/api/response/CustomerResponse.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/application/ports/in/ICreateCustomerUseCase.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/adapters/output/entity/CustomerEntity.java
-/home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/Main.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/application/domain/exception/CustomerDeleteException.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/adapters/CreateCustomerService.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/application/domain/enums/CustomerBalanceStatus.java
@@ -12,5 +13,9 @@
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/application/domain/enums/CustomerCreationStatus.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/adapters/input/api/request/CustomerRequest.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/adapters/output/repository/ICustomerRepository.java
+/home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/adapters/ListCustomerService.java
+/home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/CustomerApplicationService.java
+/home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/application/ports/out/IListCustomer.java
+/home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/adapters/output/web/SwaggerConfig.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/application/ports/out/ICreateCustomer.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-customer-service/src/main/java/br/com/acmePay/application/domain/CustomerDomain.java

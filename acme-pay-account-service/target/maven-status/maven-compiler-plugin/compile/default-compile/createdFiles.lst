@@ -1,3 +1,4 @@
+br/com/acmePay/adapters/output/web/SwaggerConfig.class
 br/com/acmePay/application/domain/enums/AccountType.class
 br/com/acmePay/adapters/input/api/request/AccountRequest.class
 br/com/acmePay/adapters/input/api/request/AccountRequest$AccountRequestBuilder.class
@@ -19,7 +20,9 @@ br/com/acmePay/adapters/output/ListAccountService.class
 br/com/acmePay/application/ports/out/IListAccount.class
 br/com/acmePay/adapters/output/DeleteAccountService.class
 br/com/acmePay/adapters/output/entity/AccountEntity$AccountEntityBuilder.class
+br/com/acmePay/adapters/output/feignClient/IFeignClient.class
 br/com/acmePay/adapters/output/CreateAccountService.class
+br/com/acmePay/constants/ConstantsRabbitMQ.class
 br/com/acmePay/application/usecase/DeleteAccountUseCase.class
 br/com/acmePay/adapters/output/entity/AccountEntity.class
 br/com/acmePay/application/ports/out/ICreateAccount.class

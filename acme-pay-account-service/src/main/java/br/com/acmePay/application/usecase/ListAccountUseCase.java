@@ -13,11 +13,14 @@ import java.util.List;
 public class ListAccountUseCase implements IListAccountUseCase {
 
     private final IListAccount listAccount;
-    //private final AccountDomain accountDomain;
+
     
     @Override
     public List<AccountDomain> execute() {
-     return listAccount.execute();
+
+        var accountDomain = AccountDomain.builder().build();
+
+     return accountDomain.listAccount(listAccount);
     }
     
 }

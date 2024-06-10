@@ -1,7 +1,6 @@
-package br.com.acmePay.adapters.output;
+package br.com.acmePay.adapters.output.database;
 
-import br.com.acmePay.adapters.output.entity.AccountEntity;
-import br.com.acmePay.adapters.output.repository.IAccountRepository;
+import br.com.acmePay.adapters.output.database.repository.IAccountRepository;
 import br.com.acmePay.application.domain.AccountDomain;
 import br.com.acmePay.application.ports.out.IDeleteAccount;
 import lombok.AllArgsConstructor;
@@ -15,6 +14,7 @@ public class DeleteAccountService implements IDeleteAccount {
 
     @Override
     public void execute(AccountDomain accountDomain) {
+
 
         var entity = repository.findByNumber(accountDomain.getNumber());
 
