@@ -1,7 +1,7 @@
 package br.com.acmePay.adapters;
 
-import br.com.acmePay.adapters.output.entity.CustomerEntity;
-import br.com.acmePay.adapters.output.repository.ICustomerRepository;
+import br.com.acmePay.adapters.output.database.entity.CustomerEntity;
+import br.com.acmePay.adapters.output.database.repository.ICustomerRepository;
 import br.com.acmePay.application.domain.CustomerDomain;
 import br.com.acmePay.application.ports.out.ICreateCustomer;
 import lombok.AllArgsConstructor;

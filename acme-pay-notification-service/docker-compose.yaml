@@ -1,6 +1,6 @@
 
 services:
-  postgres-customer:
+  postgres-notification:
     image: postgres
     container_name: acme-pay-notification-service
     environment:
@@ -8,6 +8,6 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=notification-service
     volumes:
-      - "./data/customer/postgres:/var/lib/postgres/data"
+      - "./data/notification/postgres:/var/lib/postgres/data"
     ports:
       - 5435:5432

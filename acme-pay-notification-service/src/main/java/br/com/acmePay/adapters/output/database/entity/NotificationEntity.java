@@ -1,19 +1,19 @@
-package br.com.acmePay.adapters.output.entity;
+package br.com.acmePay.adapters.output.database.entity;
 
 
-import br.com.acmePay.application.domain.enums.StatusDocumet;
+import br.com.acmePay.application.domain.enums.StatusDocument;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Builder
 @Entity
-@Table(name = "notifications")
+@Table(name = "notification")
 public class NotificationEntity {
 
     @Id
@@ -25,7 +25,8 @@ public class NotificationEntity {
     private Long id;
 
     private String document;
-    @Enumerated(EnumType.ORDINAL)
-    private Enum<StatusDocumet> statusDocument;
+    private String status_document;
+    private LocalDateTime created_at;
+    private LocalDateTime updated_at;
 
 }

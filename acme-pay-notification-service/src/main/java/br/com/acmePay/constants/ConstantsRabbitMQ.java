@@ -1,5 +1,10 @@
 package br.com.acmePay.constants;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 public interface ConstantsRabbitMQ {
      String EXCHANGE_CHECK_DOCUMENT = "check_document_queue_exchange";
      String EXCHANGE_CHECK_DOCUMENT_SUCCESS = "check_document_queue_exchange_success";
@@ -9,4 +14,3 @@ public interface ConstantsRabbitMQ {
      String QUEUE_SUCCESS_DOCUMENT = "queue_success_document";
      String QUEUE_FAIL_DOCUMENT = "queue_fail_document";
 }
-
