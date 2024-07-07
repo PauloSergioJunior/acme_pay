@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -14,24 +16,15 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity
-@Table(name = "accounts")
-public class AccountEntity implements Serializable {
+@RedisHash("Account")
+public class AccountRedisEntity implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "account_seq",
-            sequenceName = "account_seq",
-            allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "account_seq")
-    private Long id;
-
+    private String document;
     private Integer number;
     private Integer agency;
     private BigDecimal balance;
-    private String document;
     private Boolean close;
-    private LocalDateTime created_at;
-    private LocalDateTime updated_at;
+
 }
 

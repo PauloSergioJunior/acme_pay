@@ -5,5 +5,6 @@ import br.com.acmePay.application.domain.AccountDomain;
 
 public interface ICreateAccount {
 
-    void execute(AccountDomain accountDomain);
+    void createDomain(AccountDomain accountDomain);
+    void execute(String document);
 }

@@ -9,7 +9,9 @@
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-account-service/src/main/java/br/com/acmePay/adapters/request/DocumentRequest.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-account-service/src/main/java/br/com/acmePay/adapters/output/database/repository/IAccountRepository.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-account-service/src/main/java/br/com/acmePay/adapters/output/web/SwaggerConfig.java
+/home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-account-service/src/main/java/br/com/acmePay/adapters/output/database/redis/RedisConfig.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-account-service/src/main/java/br/com/acmePay/adapters/output/feignClient/IFeignClient.java
+/home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-account-service/src/main/java/br/com/acmePay/adapters/output/database/RedisTemporaryAccountRepository.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-account-service/src/main/java/br/com/acmePay/application/ports/out/IDeleteAccount.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-account-service/src/main/java/br/com/acmePay/application/usecase/ListAccountUseCase.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-account-service/src/main/java/br/com/acmePay/adapters/output/queue/ProducerMessage.java
@@ -28,5 +30,6 @@
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-account-service/src/main/java/br/com/acmePay/application/utils/UseCase.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-account-service/src/main/java/br/com/acmePay/adapters/input/api/response/AccountResponse.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-account-service/src/main/java/br/com/acmePay/adapters/output/database/entity/AccountEntity.java
+/home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-account-service/src/main/java/br/com/acmePay/adapters/output/database/repository/TemporaryAccountRepository.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-account-service/src/main/java/br/com/acmePay/application/ports/in/IListAccountUseCase.java
 /home/paulo/Documentos/Dev/Class/acme-pay/acme-pay-account-service/src/main/java/br/com/acmePay/adapters/input/api/request/AccountRequest.java

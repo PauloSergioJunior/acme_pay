@@ -4,7 +4,7 @@ import br.com.acmePay.application.domain.AccountDomain;
 import br.com.acmePay.application.domain.exception.ValidDocumentException;
 import br.com.acmePay.application.ports.in.ICreateAccountUseCase;
 import br.com.acmePay.application.ports.out.ICheckDocumentCustomer;
-import br.com.acmePay.application.ports.out.ICreateAccount;
+import br.com.acmePay.application.ports.out.ICreateRedisAccount;
 import br.com.acmePay.application.utils.UseCase;
 import lombok.AllArgsConstructor;
 
@@ -12,12 +12,12 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class CreateAccountUseCase implements ICreateAccountUseCase {
 
-    private final ICreateAccount createAccount;
     private final ICheckDocumentCustomer checkDocumentCustomer;
+    private final ICreateRedisAccount iCreateTemporaryAccount;
 
     @Override
     public void execute(AccountDomain domain) throws ValidDocumentException {
-        domain.create(createAccount, checkDocumentCustomer);
+        domain.create(iCreateTemporaryAccount, checkDocumentCustomer);
     }
 
 }

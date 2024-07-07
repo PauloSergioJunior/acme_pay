@@ -2,6 +2,7 @@ package br.com.acmePay.adapters.output.database;
 
 import br.com.acmePay.adapters.output.database.repository.INotificationRepository;
 import br.com.acmePay.adapters.output.queue.IProducerMessage;
+import br.com.acmePay.application.domain.enums.StatusDocument;
 import br.com.acmePay.application.ports.out.IFindStatusNotificationByDoc;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,8 +17,15 @@ public class FindStatusByDocService implements IFindStatusNotificationByDoc {
     @Override
     public void execute(String document) {
 
-      String statusDocument = repository.findByDocument(document).getStatus_document();
+        String statusDocument;
+        var notification = repository.findByDocument(document);
 
-      producerMessage.publish(statusDocument);
+        if (notification.isPresent()) {
+            statusDocument = notification.get().getStatus_document();
+        }else{
+            statusDocument = StatusDocument.SUSPENDED;
+        }
+
+      producerMessage.publish(statusDocument, document);
     }
 }

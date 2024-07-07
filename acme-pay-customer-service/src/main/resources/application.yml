@@ -19,6 +19,7 @@ spring:
     baseline-on-migrate: true
     enabled: true
 
+
 eureka:
   client:
     serviceUrl:

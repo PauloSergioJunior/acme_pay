@@ -1,4 +1,4 @@
-package br.com.acmePay.adapters;
+package br.com.acmePay.adapters.output.database;
 
 import br.com.acmePay.adapters.output.database.repository.ICustomerRepository;
 import br.com.acmePay.application.domain.CustomerDomain;

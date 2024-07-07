@@ -1,5 +1,5 @@
 package br.com.acmePay.adapters.output.queue;
 
 public interface IProducerMessage {
-    void publish(String status);
+    void publish(String status, String document);
 }

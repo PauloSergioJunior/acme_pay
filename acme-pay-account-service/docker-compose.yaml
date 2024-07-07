@@ -11,3 +11,12 @@ services:
       - "./data/accounts/postgres:/var/lib/postgres/data"
     ports:
       - 5433:5432
+
+  redis:
+    image: redis:7.2.0-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --loglevel warning
+    volumes:
+      - ./data:/data

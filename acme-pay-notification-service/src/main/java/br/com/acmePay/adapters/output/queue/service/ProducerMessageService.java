@@ -11,19 +11,19 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 @Slf4j
-public class ProducerMessageService implements IProducerMessage {
+public class  ProducerMessageService implements IProducerMessage {
 
     private final RabbitTemplate rabbitTemplate;
 
     @Override
-    public void publish(String status) {
+    public void publish(String status, String document) {
 
         if (status.equals(StatusDocument.ACTIVE)){
             log.info("publish : Payload {} / Queue {}", status, ConstantsRabbitMQ.QUEUE_SUCCESS_DOCUMENT);
-            rabbitTemplate.convertAndSend(ConstantsRabbitMQ.QUEUE_SUCCESS_DOCUMENT, status);
+            rabbitTemplate.convertAndSend(ConstantsRabbitMQ.QUEUE_SUCCESS_DOCUMENT, document);
         }else {
             log.info("publish : Payload {} / Queue {}", status, ConstantsRabbitMQ.QUEUE_FAIL_DOCUMENT);
-            rabbitTemplate.convertAndSend(ConstantsRabbitMQ.QUEUE_FAIL_DOCUMENT, status);
+            rabbitTemplate.convertAndSend(ConstantsRabbitMQ.QUEUE_FAIL_DOCUMENT, document);
         }
 
     }

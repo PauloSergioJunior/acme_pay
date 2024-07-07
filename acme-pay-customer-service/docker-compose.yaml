@@ -11,3 +11,4 @@ services:
       - "./data/customer/postgres:/var/lib/postgres/data"
     ports:
       - 5434:5432
+

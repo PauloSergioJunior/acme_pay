@@ -4,6 +4,7 @@ br/com/acmePay/application/domain/enums/AccountType.class
 br/com/acmePay/adapters/input/api/request/AccountRequest.class
 br/com/acmePay/adapters/input/api/request/AccountRequest$AccountRequestBuilder.class
 br/com/acmePay/application/ports/in/ICreateAccountUseCase.class
+br/com/acmePay/adapters/output/database/RedisTemporaryAccountRepository.class
 br/com/acmePay/application/domain/AccountDomain.class
 br/com/acmePay/adapters/input/api/response/AccountResponse.class
 br/com/acmePay/application/usecase/ListAccountUseCase.class
@@ -22,7 +23,9 @@ br/com/acmePay/application/domain/exception/BalanceToWithdrawException.class
 br/com/acmePay/adapters/output/queue/service/CheckDocumentCustomerService.class
 br/com/acmePay/application/domain/AccountDomain$AccountDomainBuilder.class
 br/com/acmePay/application/ports/out/IListAccount.class
+br/com/acmePay/adapters/output/database/repository/TemporaryAccountRepository.class
 br/com/acmePay/adapters/output/feignClient/IFeignClient.class
+br/com/acmePay/adapters/output/database/redis/RedisConfig.class
 br/com/acmePay/adapters/output/database/entity/AccountEntity.class
 br/com/acmePay/adapters/output/queue/ProducerMessage.class
 br/com/acmePay/constants/ConstantsRabbitMQ.class

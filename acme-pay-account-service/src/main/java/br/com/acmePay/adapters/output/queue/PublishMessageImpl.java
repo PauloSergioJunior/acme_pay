@@ -1,7 +1,6 @@
 package br.com.acmePay.adapters.output.queue;
 
 
-import br.com.acmePay.adapters.request.DocumentRequest;
 import br.com.acmePay.constants.ConstantsRabbitMQ;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,9 +15,9 @@ public class PublishMessageImpl implements ProducerMessage{
     private final RabbitTemplate rabbitTemplate;
 
     @Override
-    public void publish(DocumentRequest documentRequest) {
+    public void publish(String documentRequest) {
         log.info("Publishing : Payload {} / Queue {}", documentRequest, ConstantsRabbitMQ.QUEUE_CHECK_DOCUMENT);
-        this.rabbitTemplate.convertSendAndReceive(ConstantsRabbitMQ.QUEUE_CHECK_DOCUMENT, documentRequest.getDocument());
+        this.rabbitTemplate.convertSendAndReceive(ConstantsRabbitMQ.QUEUE_CHECK_DOCUMENT, documentRequest);
         log.info("Published : Payload {} / Queue {}", documentRequest, ConstantsRabbitMQ.QUEUE_CHECK_DOCUMENT);
 
     }

@@ -1,17 +1,15 @@
 package br.com.acmePay.application.domain;
 
-import br.com.acmePay.adapters.request.DocumentRequest;
+import br.com.acmePay.adapters.output.database.entity.AccountRedisEntity;
 import br.com.acmePay.application.domain.exception.BalanceToWithdrawException;
 import br.com.acmePay.application.domain.exception.ValidDocumentException;
-import br.com.acmePay.application.ports.out.ICheckDocumentCustomer;
-import br.com.acmePay.application.ports.out.ICreateAccount;
-import br.com.acmePay.application.ports.out.IDeleteAccount;
-import br.com.acmePay.application.ports.out.IListAccount;
+import br.com.acmePay.application.ports.out.*;
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Getter
 @Setter
@@ -31,13 +29,12 @@ public class AccountDomain {
     private LocalDateTime created_at;
     private LocalDateTime updated_at;
 
-    public void create(ICreateAccount createAccount, ICheckDocumentCustomer checkDocumentCustomer) {
+    public void create(ICreateRedisAccount iCreateTemporaryAccount, ICheckDocumentCustomer checkDocumentCustomer) {
 
-        var doc = DocumentRequest.builder().document(this.document).build();
-        checkDocumentCustomer.execute(doc);
+        iCreateTemporaryAccount.execute(this);
 
+        checkDocumentCustomer.execute(this.document);
 
-        createAccount.execute(this);
     }
 
     public void delete(IDeleteAccount iDeleteAccount) {
@@ -59,6 +56,17 @@ public class AccountDomain {
             throw new BalanceToWithdrawException("error withdraw");
         }
     }
+
+    public void validDocument(ICreateAccount createAccount, String document) {
+
+        createAccount.execute(document);
+
+    }
+
+    public void invalidDocument(IDeleteRedisAccount deleteRedisAccount, String document) {
+        deleteRedisAccount.execute(document);
+    }
+
 
     private void validDocument(String document) throws ValidDocumentException {
 
