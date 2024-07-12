@@ -45,16 +45,20 @@ public class AccountDomain {
        return iListAccount.execute();
     }
 
-    public void deposit(BigDecimal amount){
-        this.balance = this.balance.add(amount);
+    public void transfer(ITransfer transfer, AccountDomain  accountDestiny, BigDecimal amount) throws BalanceToWithdrawException {
+            transfer.execute(this,accountDestiny,amount);
     }
 
-    public void withdraw(BigDecimal amount) throws BalanceToWithdrawException {
-        if (this.balance.compareTo(amount) >= 0){
-            this.balance = this.balance.subtract(amount);
-        }else {
-            throw new BalanceToWithdrawException("error withdraw");
-        }
+    public void deposit(IDeposit deposit, BigDecimal amount){
+
+        deposit.execute(this,amount);
+
+    }
+
+    public void withdraw(IWithdraw withdraw, BigDecimal amount) throws BalanceToWithdrawException {
+
+        withdraw.execute(this, amount);
+
     }
 
     public void validDocument(ICreateAccount createAccount, String document) {
@@ -68,11 +72,4 @@ public class AccountDomain {
     }
 
 
-    private void validDocument(String document) throws ValidDocumentException {
-
-        if (document == null || document.length() < 11) {
-            throw new ValidDocumentException("Document Invalid");
-        }
-
-    }
 }

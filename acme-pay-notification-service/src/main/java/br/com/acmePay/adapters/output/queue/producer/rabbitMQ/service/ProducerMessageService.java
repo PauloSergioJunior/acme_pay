@@ -1,4 +1,4 @@
-package br.com.acmePay.adapters.output.queue.service;
+package br.com.acmePay.adapters.output.queue.producer.rabbitMQ.service;
 
 import br.com.acmePay.adapters.output.queue.IProducerMessage;
 import br.com.acmePay.application.domain.enums.StatusDocument;

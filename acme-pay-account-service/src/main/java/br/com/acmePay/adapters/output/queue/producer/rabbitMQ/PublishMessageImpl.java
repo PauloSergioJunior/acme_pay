@@ -1,4 +1,4 @@
-package br.com.acmePay.adapters.output.queue;
+package br.com.acmePay.adapters.output.queue.producer.rabbitMQ;
 
 
 import br.com.acmePay.constants.ConstantsRabbitMQ;

@@ -2,14 +2,13 @@ package br.com.acmePay.adapters.input.controller;
 
 import br.com.acmePay.adapters.input.api.IAccountResourceAPI;
 import br.com.acmePay.adapters.input.api.request.AccountRequest;
+import br.com.acmePay.adapters.input.api.request.TransactionRequest;
 import br.com.acmePay.adapters.input.api.response.AccountResponse;
 import br.com.acmePay.application.domain.AccountDomain;
+import br.com.acmePay.application.domain.exception.BalanceToWithdrawException;
 import br.com.acmePay.application.domain.exception.ValidDocumentException;
-import br.com.acmePay.application.ports.in.ICreateAccountUseCase;
-import br.com.acmePay.application.ports.in.IDeleteAccountUseCase;
-import br.com.acmePay.application.ports.in.IListAccountUseCase;
+import br.com.acmePay.application.ports.in.*;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
@@ -22,6 +21,9 @@ public class AccountController implements IAccountResourceAPI {
     private final ICreateAccountUseCase createAccountUseCase;
     private final IDeleteAccountUseCase deleteAccountUseCase;
     private final IListAccountUseCase listAccountUseCase;
+    private final IDepositUseCase depositUseCase;
+    private final IWithdrawUseCase withdrawUseCase;
+    private final ITransferUseCase transferUseCase;
 
     @Override
     public AccountResponse create(AccountRequest request)  {
@@ -82,6 +84,104 @@ public class AccountController implements IAccountResourceAPI {
                         .message(e.toString())
                         .build())
                 .toList();
+    }
+
+    @Override
+    public AccountResponse deposit(TransactionRequest transactionRequest) {
+
+        var amount = transactionRequest.getTransferValue();
+
+        var domain = AccountDomain.builder()
+                .created_at(null)
+                .updated_at(null)
+                .close(false)
+                .agency(transactionRequest.getAgency())
+                .number(transactionRequest.getNumber())
+                .document(transactionRequest.getDocument())
+                .balance(null)
+                .build();
+
+        depositUseCase.execute(amount, domain);
+
+        return AccountResponse.builder()
+                .message("deposit made!")
+                .build();
+    }
+
+    @Override
+    public AccountResponse withdraw(TransactionRequest transactionRequest) throws BalanceToWithdrawException {
+
+        try {
+
+            var amount = transactionRequest.getTransferValue();
+
+            var domain = AccountDomain.builder()
+                    .created_at(null)
+                    .updated_at(null)
+                    .close(false)
+                    .agency(transactionRequest.getAgency())
+                    .number(transactionRequest.getNumber())
+                    .document(transactionRequest.getDocument())
+                    .balance(null)
+                    .build();
+
+            withdrawUseCase.execute(amount, domain);
+
+            return AccountResponse.builder()
+                    .message("withdraw made!")
+                    .build();
+
+        }catch (BalanceToWithdrawException e){
+
+            return AccountResponse.builder()
+                    .message(e.getMessage())
+                    .build();
+        }
+
+
+    }
+
+    @Override
+    public AccountResponse transfer(TransactionRequest transactionRequest) throws BalanceToWithdrawException {
+
+        try {
+
+            var amount = transactionRequest.getTransferValue();
+
+            var domain = AccountDomain.builder()
+                    .created_at(null)
+                    .updated_at(null)
+                    .close(false)
+                    .agency(transactionRequest.getAgency())
+                    .number(transactionRequest.getNumber())
+                    .document(transactionRequest.getDocument())
+                    .balance(null)
+                    .build();
+
+            var transactionRequestDestiny = transactionRequest.getAccountDestiny();
+
+            var domainDestiny = AccountDomain.builder()
+                    .created_at(null)
+                    .updated_at(null)
+                    .close(false)
+                    .agency(transactionRequestDestiny.getAgency())
+                    .number(transactionRequestDestiny.getNumber())
+                    .document(transactionRequestDestiny.getDocument())
+                    .balance(null)
+                    .build();
+
+            transferUseCase.execute(domain, domainDestiny, amount);
+
+            return AccountResponse.builder()
+                    .message("transfer made!")
+                    .build();
+
+        }catch (BalanceToWithdrawException e){
+
+            return AccountResponse.builder()
+                    .message(e.getMessage())
+                    .build();
+        }
     }
 
 

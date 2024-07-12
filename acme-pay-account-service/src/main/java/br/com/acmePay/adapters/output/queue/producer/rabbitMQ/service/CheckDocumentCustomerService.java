@@ -1,6 +1,6 @@
-package br.com.acmePay.adapters.output.queue.service;
+package br.com.acmePay.adapters.output.queue.producer.rabbitMQ.service;
 
-import br.com.acmePay.adapters.output.queue.ProducerMessage;
+import br.com.acmePay.adapters.output.queue.producer.rabbitMQ.ProducerMessage;
 import br.com.acmePay.application.ports.out.ICheckDocumentCustomer;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

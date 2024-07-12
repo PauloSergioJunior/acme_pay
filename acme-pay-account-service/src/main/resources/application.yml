@@ -22,6 +22,16 @@ spring:
     port: '6379'
     password: 'redis'
 
+  spring:
+    kafka:
+      bootstrap-servers: localhost:9092 # Endereço do servidor Kafka
+      consumer:
+        group-id: transfer # ID do grupo do consumidor
+        auto-offset-reset: earliest # Pode ser earliest ou latest
+      producer:
+        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+        value-serializer: org.apache.kafka.common.serialization.JsonSerializer
+
 # swagger-ui
 springdoc:
   default-produces-media-type: application/json

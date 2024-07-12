@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.TimeToLive;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -16,7 +17,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@RedisHash("Account")
+@RedisHash(value = "Account", timeToLive = 120L)
 public class AccountRedisEntity implements Serializable {
 
     @Id
