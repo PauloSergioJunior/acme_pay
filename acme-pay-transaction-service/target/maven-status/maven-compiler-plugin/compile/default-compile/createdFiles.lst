@@ -1,2 +1,6 @@
+br/com/acmePay/adapters/input/queue/config/ConsumerConfiguration.class
+br/com/acmePay/adapters/input/queue/service/MessageConsumer.class
+br/com/acmePay/adapters/input/queue/IConsumerMessage.class
+br/com/acmePay/TransactionApplicationService.class
 br/com/acmePay/application/domain/TransactionDomain.class
-br/com/acmePay/Main.class
+br/com/acmePay/constants/ConstantsKafka.class

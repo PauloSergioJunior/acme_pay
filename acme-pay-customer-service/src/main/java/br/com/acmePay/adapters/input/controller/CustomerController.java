@@ -6,9 +6,11 @@ import br.com.acmePay.adapters.input.api.response.CustomerResponse;
 import br.com.acmePay.application.domain.CustomerDomain;
 import br.com.acmePay.application.ports.in.ICreateCustomerUseCase;
 import br.com.acmePay.application.ports.in.IListCustomerUseCase;
+import br.com.acmePay.application.ports.in.ISalaryUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -17,6 +19,7 @@ public class CustomerController implements ICustomerResourceAPI {
 
     private final ICreateCustomerUseCase customerUseCase;
     private final IListCustomerUseCase listCustomerUseCase;
+    private final ISalaryUseCase salaryUseCase;
 
     @Override
     public CustomerResponse create(CustomerRequest request) {
@@ -43,6 +46,13 @@ public class CustomerController implements ICustomerResourceAPI {
                         .message(g.toString())
                         .build())
                 .toList();
+    }
+
+    @Override
+    public BigDecimal findWage(String document) {
+
+        return salaryUseCase.execute(document);
+
     }
 
 }

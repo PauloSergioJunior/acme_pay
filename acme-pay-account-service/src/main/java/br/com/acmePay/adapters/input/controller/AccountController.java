@@ -4,6 +4,7 @@ import br.com.acmePay.adapters.input.api.IAccountResourceAPI;
 import br.com.acmePay.adapters.input.api.request.AccountRequest;
 import br.com.acmePay.adapters.input.api.request.TransactionRequest;
 import br.com.acmePay.adapters.input.api.response.AccountResponse;
+import br.com.acmePay.adapters.output.queue.dto.Transaction;
 import br.com.acmePay.application.domain.AccountDomain;
 import br.com.acmePay.application.domain.exception.BalanceToWithdrawException;
 import br.com.acmePay.application.domain.exception.ValidDocumentException;
@@ -24,6 +25,7 @@ public class AccountController implements IAccountResourceAPI {
     private final IDepositUseCase depositUseCase;
     private final IWithdrawUseCase withdrawUseCase;
     private final ITransferUseCase transferUseCase;
+    private final ILimitCardUseCase limitCardUseCase;
 
     @Override
     public AccountResponse create(AccountRequest request)  {
@@ -87,18 +89,15 @@ public class AccountController implements IAccountResourceAPI {
     }
 
     @Override
-    public AccountResponse deposit(TransactionRequest transactionRequest) {
+    public AccountResponse deposit(Transaction transactionRequest) {
 
         var amount = transactionRequest.getTransferValue();
 
         var domain = AccountDomain.builder()
-                .created_at(null)
-                .updated_at(null)
                 .close(false)
-                .agency(transactionRequest.getAgency())
-                .number(transactionRequest.getNumber())
-                .document(transactionRequest.getDocument())
-                .balance(null)
+                .agency(transactionRequest.getAccountOrigin().getAgency())
+                .number(transactionRequest.getAccountOrigin().getNumber())
+                .document(transactionRequest.getAccountOrigin().getDocument())
                 .build();
 
         depositUseCase.execute(amount, domain);
@@ -109,20 +108,17 @@ public class AccountController implements IAccountResourceAPI {
     }
 
     @Override
-    public AccountResponse withdraw(TransactionRequest transactionRequest) throws BalanceToWithdrawException {
+    public AccountResponse withdraw(Transaction transactionRequest) throws BalanceToWithdrawException {
 
         try {
 
             var amount = transactionRequest.getTransferValue();
 
             var domain = AccountDomain.builder()
-                    .created_at(null)
-                    .updated_at(null)
                     .close(false)
-                    .agency(transactionRequest.getAgency())
-                    .number(transactionRequest.getNumber())
-                    .document(transactionRequest.getDocument())
-                    .balance(null)
+                    .agency(transactionRequest.getAccountOrigin().getAgency())
+                    .number(transactionRequest.getAccountOrigin().getNumber())
+                    .document(transactionRequest.getAccountOrigin().getDocument())
                     .build();
 
             withdrawUseCase.execute(amount, domain);
@@ -142,32 +138,26 @@ public class AccountController implements IAccountResourceAPI {
     }
 
     @Override
-    public AccountResponse transfer(TransactionRequest transactionRequest) throws BalanceToWithdrawException {
+    public AccountResponse transfer(Transaction transactionRequest) throws BalanceToWithdrawException {
 
         try {
 
             var amount = transactionRequest.getTransferValue();
 
             var domain = AccountDomain.builder()
-                    .created_at(null)
-                    .updated_at(null)
                     .close(false)
-                    .agency(transactionRequest.getAgency())
-                    .number(transactionRequest.getNumber())
-                    .document(transactionRequest.getDocument())
-                    .balance(null)
+                    .agency(transactionRequest.getAccountOrigin().getAgency())
+                    .number(transactionRequest.getAccountOrigin().getNumber())
+                    .document(transactionRequest.getAccountOrigin().getDocument())
                     .build();
 
             var transactionRequestDestiny = transactionRequest.getAccountDestiny();
 
             var domainDestiny = AccountDomain.builder()
-                    .created_at(null)
-                    .updated_at(null)
                     .close(false)
                     .agency(transactionRequestDestiny.getAgency())
                     .number(transactionRequestDestiny.getNumber())
                     .document(transactionRequestDestiny.getDocument())
-                    .balance(null)
                     .build();
 
             transferUseCase.execute(domain, domainDestiny, amount);
@@ -182,6 +172,16 @@ public class AccountController implements IAccountResourceAPI {
                     .message(e.getMessage())
                     .build();
         }
+    }
+
+    @Override
+    public AccountResponse getLimitCard(String document) {
+
+       var limit = limitCardUseCase.execute(document);
+
+       return AccountResponse.builder()
+                .message(limit.toString())
+                .build();
     }
 
 

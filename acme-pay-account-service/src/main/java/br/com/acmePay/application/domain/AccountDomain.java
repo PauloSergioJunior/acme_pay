@@ -47,6 +47,7 @@ public class AccountDomain {
 
     public void transfer(ITransfer transfer, AccountDomain  accountDestiny, BigDecimal amount) throws BalanceToWithdrawException {
             transfer.execute(this,accountDestiny,amount);
+
     }
 
     public void deposit(IDeposit deposit, BigDecimal amount){
@@ -69,6 +70,25 @@ public class AccountDomain {
 
     public void invalidDocument(IDeleteRedisAccount deleteRedisAccount, String document) {
         deleteRedisAccount.execute(document);
+    }
+
+    public BigDecimal limitCard(ILimitCard limitCard){
+
+        var salary = limitCard.execute(this.document);
+        var min = BigDecimal.valueOf(0.1);
+        var med = BigDecimal.valueOf(0.3);
+        var max = BigDecimal.valueOf(0.5);
+        var limit = BigDecimal.ZERO;
+
+        if(salary.compareTo(BigDecimal.valueOf(10000)) < 0){
+            limit = min.multiply(salary);
+        } else if (salary.compareTo(BigDecimal.valueOf(10000)) >= 0 && salary.compareTo(BigDecimal.valueOf(15000)) <= 0) {
+            limit = med.multiply(salary);
+        } else if (salary.compareTo(BigDecimal.valueOf(15000)) > 0) {
+            limit = max.multiply(salary);
+        }
+
+        return limit.setScale(2);
     }
 
 

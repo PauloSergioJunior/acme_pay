@@ -1,12 +1,13 @@
-package br.com.acmePay.adapters.output.database;
+package br.com.acmePay.adapters.output.queue.producer.kafka.service;
 
-import br.com.acmePay.adapters.input.api.request.TransactionRequest;
-import br.com.acmePay.adapters.output.database.entity.AccountEntity;
 import br.com.acmePay.adapters.output.database.repository.IAccountRepository;
+import br.com.acmePay.adapters.output.queue.dto.KafkaDTO;
+import br.com.acmePay.adapters.output.queue.dto.Transaction;
 import br.com.acmePay.adapters.output.queue.producer.kafka.ISendMessage;
 import br.com.acmePay.application.domain.AccountDomain;
 import br.com.acmePay.application.domain.exception.BalanceToWithdrawException;
 import br.com.acmePay.application.ports.out.IWithdraw;
+import br.com.acmePay.application.utils.DateFormat;
 import br.com.acmePay.constants.ConstantsKafka;
 import br.com.acmePay.constants.ConstantsTypeTransaction;
 import lombok.AllArgsConstructor;
@@ -46,18 +47,23 @@ public class WithdrawService implements IWithdraw {
 
             accountRepository.save(entity);
 
-            sendMessageKafka(amount, entity);
+            sendMessageKafka(amount, domain);
         }
     }
 
-    private void sendMessageKafka(BigDecimal amount, AccountEntity entity) {
-        var entityKafka = TransactionRequest.builder()
-                .agency(entity.getAgency())
-                .number(entity.getNumber())
-                .document(entity.getDocument())
-                .dateTransfer(LocalDateTime.now())
-                .transferValue(amount)
+    private void sendMessageKafka(BigDecimal amount, AccountDomain accountOrigin) {
+
+        var dtoOrigin = KafkaDTO.builder()
+                .agency(accountOrigin.getAgency())
+                .number(accountOrigin.getNumber())
+                .document(accountOrigin.getDocument()).build();
+
+        var entityKafka = Transaction.builder()
+                .accountDestiny(null)
+                .accountOrigin(dtoOrigin)
                 .typeTransaction(ConstantsTypeTransaction.WITHDRAW)
+                .dateTransfer(DateFormat.format())
+                .transferValue(amount)
                 .build();
 
         sendMessage.execute(ConstantsKafka.TOPIC_TRANSFER_NAME, entityKafka);

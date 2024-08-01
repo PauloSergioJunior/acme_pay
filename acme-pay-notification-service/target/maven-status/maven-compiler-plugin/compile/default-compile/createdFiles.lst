@@ -26,8 +26,8 @@ br/com/acmePay/adapters/input/api/request/INotificationResourceAPI.class
 br/com/acmePay/adapters/input/queue/consumer/SubscribeMessageImpl.class
 br/com/acmePay/application/ports/in/IFindStatusByDocUseCase.class
 br/com/acmePay/adapters/output/database/repository/INotificationRepository.class
+br/com/acmePay/adapters/output/queue/producer/rabbitMQ/service/ProducerMessageService.class
 br/com/acmePay/adapters/output/database/entity/NotificationEntity.class
 br/com/acmePay/adapters/input/response/DocumentResponse$DocumentResponseBuilder.class
 br/com/acmePay/application/utils/UseCase.class
-br/com/acmePay/adapters/output/queue/service/ProducerMessageService.class
 br/com/acmePay/NotificationService.class
