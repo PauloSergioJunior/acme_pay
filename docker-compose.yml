@@ -10,6 +10,9 @@ services:
     volumes:
       - ~/docker-conf/rabbitmq/data/:/var/lib/rabbitmq
       - ~/docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
 
 
   zookeeper:
