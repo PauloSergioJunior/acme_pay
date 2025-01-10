@@ -1,0 +1,1 @@
+ALTER TABLE trustgate RENAME TO trust_gate;

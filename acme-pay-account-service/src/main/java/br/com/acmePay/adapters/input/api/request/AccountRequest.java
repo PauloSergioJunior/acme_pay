@@ -17,5 +17,6 @@ public class AccountRequest {
     private Integer agency;
     private String document;
     private BigDecimal balance;
+    private String email;
 
 }

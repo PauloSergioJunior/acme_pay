@@ -38,7 +38,7 @@ create table  if not exists transactions(
 	amount DECIMAL(10,2) not null
 );
 
-create table  if not exists notifications(
+create table  if not exists trustGates(
 	id serial PRIMARY KEY,
 	data_transaction TIMESTAMP not null,
 	source_account INTEGER not null,

@@ -28,6 +28,7 @@ public class CreateAccountService implements ICreateAccount {
                 .created_at(accountDomain.getCreated_at())
                 .updated_at(accountDomain.getUpdated_at())
                 .close(accountDomain.getClose())
+                .email(accountDomain.getEmail())
                 .build();
 
         repository.save(entity);
@@ -49,6 +50,7 @@ public class CreateAccountService implements ICreateAccount {
                     .document(entityRedis.get().getDocument())
                     .created_at(LocalDateTime.now())
                     .updated_at(null)
+                    .email(entityRedis.get().getEmail())
                     .build();
 
             repository.save(entity);

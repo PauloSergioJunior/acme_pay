@@ -28,6 +28,7 @@ public class AccountDomain {
     private String customer;
     private LocalDateTime created_at;
     private LocalDateTime updated_at;
+    private String email;
 
     public void create(ICreateRedisAccount iCreateTemporaryAccount, ICheckDocumentCustomer checkDocumentCustomer) {
 

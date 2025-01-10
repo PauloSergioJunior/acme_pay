@@ -39,6 +39,7 @@ public class AccountController implements IAccountResourceAPI {
                     .number(request.getNumber())
                     .document(request.getDocument())
                     .balance(request.getBalance())
+                    .email(request.getEmail())
                     .build();
 
             createAccountUseCase.execute(domain);
@@ -68,6 +69,7 @@ public class AccountController implements IAccountResourceAPI {
                 .number(numberAccount)
                 .document(null)
                 .balance(null)
+                .email(null)
                 .build();
 
         deleteAccountUseCase.execute(domain);

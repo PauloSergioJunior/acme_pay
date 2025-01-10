@@ -26,6 +26,7 @@ public class AccountRedisEntity implements Serializable {
     private Integer agency;
     private BigDecimal balance;
     private Boolean close;
+    private String email;
 
 }
 

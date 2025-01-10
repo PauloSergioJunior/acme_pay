@@ -23,6 +23,7 @@ public class CreateRedisAccountService implements ICreateRedisAccount {
                 .balance(domain.getBalance())
                 .document(domain.getDocument())
                 .close(domain.getClose())
+                .email(domain.getEmail())
                 .build();
 
        repository.save(entity);

@@ -29,6 +29,7 @@ public class ListAccountService implements IListAccount {
                             .number(a.getNumber())
                             .document(a.getDocument())
                             .balance(a.getBalance())
+                            .email(a.getEmail())
                             .build())
                     .toList();
     }

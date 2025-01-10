@@ -1,0 +1,1 @@
+create sequence trustGate_seq;
